@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+</head>
+
+<body class="bg-success bg-opacity-25">
+    <main>
+        <section class="container py-5">
+            <h2>Quản Lý Tuyển Sinh</h2>
+            <div class="form-check">
+                <p>Vui lòng chọn khu vực:</p>
+                <ul class="khuVuc">
+                    <li class="type">
+                        <input type="radio" id="KvA" value="KvA" name="selector" />
+                        <label for="KvA">khu vực A</label>
+                        <div class="check"></div>
+                    </li>
+                    <li class="type">
+                        <input type="radio" id="KvB" value="KvB" name="selector" />
+                        <label for="KvB">khu vực B</label>
+                        <div class="check"></div>
+                    </li>
+                    <li class="type">
+                        <input type="radio" id="KvC" value="KvC" name="selector" />
+                        <label for="KvC">khu vực C</label>
+                        <div class="check"></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="lopDoiTuong">
+                <p>Vui lòng chọn đối tượng:</p>
+                <ul class="doiTuong">
+                    <li class="type">
+                        <input type="radio" id="doiTuongMot" value="doiTuongMot" name="selection" />
+                        <label for="doiTuongMot">đối tượng 1</label>
+                        <div class="check"></div>
+                    </li>
+                    <li class="type">
+                        <input type="radio" id="doiTuongHai" value="doiTuongHai" name="selection" />
+                        <label for="doiTuongHai">đối tượng 2</label>
+                        <div class="check"></div>
+                    </li>
+                    <li class="type">
+                        <input type="radio" id="doiTuongBa" value="doiTuongBa" name="selection" />
+                        <label for="doiTuongBa">đối tượng 3</label>
+                        <div class="check"></div>
+                    </li>
+                </ul>
+            </div>
+            <p class="diemChuan"> Điểm chuẩn là : 28</p>
+            <div class="mb-3">
+                <label for="" class="form-label">Điểm môn thứ 1: </label>
+                <input type="number" class="form-control" style="width: 30%;" id="monToan" placeholder="Điểm môn toán">
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Điểm môn thứ 2: </label>
+                <input type="number" class="form-control" style="width: 30%;" id="monVan" placeholder="Điểm môn văn">
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Điểm môn thứ 3: </label>
+                <input type="number" class="form-control" style="width: 30%;" id="monHoa" placeholder="Điểm môn hóa">
+            </div>
+            <button class="btn btn-primary" onclick="diemTongBaMon()">Kết Quả</button>
+            <div class="bg-success mt-3 text-black" style="width: 30%;"></div>
+        </section>
+        <section class="container py-5">
+            <h2>Tính Tiền Điện</h2>
+            <div class="mb-3">
+                <label for="" class="form-label">Nhập họ & tên</label>
+                <input type="text" class="form-control" style="width: 30%;" id="hoTen" placeholder="Nhập họ tên">
+            </div>
+            <div class="wrap-input100 validate-input" data-validate="Name is required">
+                <p>Nhập vào số Kw</p>
+                <input class="input100" value="" type="number" name="name" id="txt-kw" placeholder="Số kw ..." />
+                <span class="focus-input100"></span>
+            </div>
+            <button class="btn btn-primary mt-3" onclick="tongTienDien()">Tính tiền điện</button>
+            <div id="divThanhTien" class="dongia">
+                <h2><span id="xuatTien" class="xuatTien"></span></h2>
+            </div>
+        </section>
+        <section class="container py-5">
+            <h2>Tính Thuế Thu Nhập Cá Nhân</h2>
+            <div class="mb-3">
+                <label for="" class="form-label">Nhập họ & tên</label>
+                <input type="text" placeholder="Nhập Họ Tên" id="txt-hoTen">
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Tổng Thu nhập</label>
+                <input type="number" placeholder="Thu nhập/năm" id="thuNhapNam">
+            </div>
+            <div class="wrap-input100 validate-input mb-3" data-validate="Name is required">
+                <p>Nhập số người phụ thuộc</p>
+                <input class="input100" type="number" id="nguoiPhuThuoc" name="name"
+                    placeholder="Số Người Phụ Thuộc..." />
+                <span class="focus-input100"></span>
+            </div>
+            <button class="btn btn-primary" onclick="thuNhapSauThue()">Tính tiền thuế</button>
+            <div class="bg-warning text-black-50 mt-3" id="thueThuNhap"></div>
+        </section>
+        <section class="container py-5">
+            <h2>Tính Tiền Cáp</h2>
+            <p class="diemChuan"></p>
+            <div class="form-check">
+                <p>Vui lòng chọn đối tượng:</p>
+                <ul class="loaiKhachHang">
+                    <li class="type">
+                        <input type="radio" id="nhaDan" value="nhaDan" name="select" />
+                        <label for="nhaDan">Nhà Dân</label>
+                        <div class="check"></div>
+                    </li>
+                    <li class="type">
+                        <input type="radio" id="doanhNghiep" value="doanhNghiep" name="select" />
+                        <label for="doanhNghiep">Doanh Nghiệp</label>
+                        <div class="check"></div>
+                    </li>
+                </ul>
+                <!-- <input type="number" value="demo" placeholder="kết nối doanh nghiệp" id="demo" class="demo">
+                <label for="demo">Chọn số kết nối</label> -->
+                <div class="mb-3">
+                    <label for="" class="form-label mt-2">Chọn loại cáp :</label>
+                    <select class="form-select" id="kenhCaoCap" style="width: 10%;">
+                        <option value="xuLyHD" id="xuLyHD">Xử lý Hoạt Động</option>
+                        <option value="dichVuCoBan" id="dichVuCoBan">Dịch vụ Cơ Bản</option>
+                        <option value="dichVuCaoCap" id="dichVuCaoCap">Cao cấp</option>
+                    </select>
+                </div>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="" class="form-label"> Nhập mã khách hàng :</label>
+                <input type="text" placeholder="nhập mã khách hàng" id="maKhachHang">
+            </div>
+            <button class="btn btn-primary" onclick="tongTienCap()">Tính tiền cáp</button>
+            <div class="bg-success mt-3 text-black" style="width: 30%;" id="tienCap"></div>
+        </section>
+    </main>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+        </script>
+    <script src="./index.js"></script>
+</body>
+
+</html>
